@@ -148,7 +148,7 @@ h1, h2, h3, h4 { color: var(--color-navy); }
 .container-x { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
 
 @keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.05); } }
-.kenburns { animation: kenburns 7s ease-out forwards; }
+.kenburns { animation: kenburns 4s ease-out forwards; }
 @keyframes float-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 .float-y { animation: float-y 4.5s ease-in-out infinite; }
 @keyframes spin-slow { to { transform: rotate(360deg); } }
