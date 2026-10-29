@@ -84,7 +84,7 @@ export const DEFAULT_BOT: BotSettings = {
   name: "{business} Assistant",
   status: "Online · replies instantly",
   hint: "Hi! Have a question? Ask me 👋",
-  welcome: "Namaste! 🙏 Welcome to {business}. I can help you with registration, logo, website, social media and Microsoft certifications.",
+  welcome: "Namaste! 🙏 Welcome to {business}. I can help you with registration, logo, website, social media, real estate marketing and Microsoft certifications.",
   returning: "Welcome back, {name}! 😊 How can I help you today?",
   collectDetails: true,
   askName: "Before we start, may I know your name?",
@@ -102,6 +102,7 @@ export const DEFAULT_BOT: BotSettings = {
     { label: "Logo & Branding", message: "I need a logo and branding for my business." },
     { label: "Website", message: "I need a website for my business." },
     { label: "Microsoft Certification", message: "I want to get Microsoft certified. Which exam should I start with?" },
+    { label: "Real Estate", message: "I need help marketing my real estate project / properties." },
   ],
   placeholder: "Type your message...",
   callLabel: "Call us",
@@ -112,6 +113,11 @@ export const DEFAULT_BOT: BotSettings = {
     "Sorry {name}, I didn't fully get that. 🙏 I can help with registration, GST, trademark, logo, website, social media, AI tools and Microsoft certifications — or our expert can call you and answer anything.",
   offer: "",
   faqs: [
+    {
+      q: "Do you offer real estate services?",
+      keywords: "real estate, realestate, property, properties, plots, flats, villa, apartment, builder, developer, venture, rera, site visit, listing",
+      a: "Yes! 🏡 We help builders, developers and agents sell faster: property websites and landing pages, Facebook & Instagram ads, Google ads, 99acres / MagicBricks / Housing listings, drone and walkthrough videos, brochures, WhatsApp lead follow-up and RERA registration support. Share your project details and our expert will call you with a plan.",
+    },
     {
       q: "Do I need to visit your office?",
       keywords: "visit office, come to office, offline, in person, physically, online process",
@@ -127,19 +133,19 @@ export const DEFAULT_BOT: BotSettings = {
 };
 
 export const DEFAULT_SITE: SiteSettings = {
-  siteName: "TriMinds",
-  tagline: "Registration, branding, websites and marketing for Indian businesses.",
+  siteName: "Sree AI Digital Agency",
+  tagline: "Your Vision, Our Digital Innovation. AI • Creativity • Growth",
   logo: "",
   logoHeight: 40,
-  colors: { navy: "#0B1F4B", royal: "#1E4FD8", brand: "#FF7A1A" },
-  phone: "+91 98765 43210",
-  whatsapp: "919876543210",
-  email: "hello@triminds.in",
+  colors: { navy: "#0D0D0D", royal: "#8A6A1E", brand: "#C9A227" },
+  phone: "+91 90003 13998",
+  whatsapp: "919000313998",
+  email: "sreeaidigitalagency@gmail.com",
   hours: "Mon–Sat, 10 AM – 7 PM",
-  city: "Hyderabad, Telangana",
+  city: "KPHB, JNTU, Hyderabad",
   phones: [],
   emails: [],
-  addresses: [],
+  addresses: [{ label: "Office", line: "KPHB, near JNTU, Hyderabad, Telangana", mapUrl: "" }],
   socials: { facebook: "", instagram: "", linkedin: "", youtube: "" },
   bot: DEFAULT_BOT,
 };
