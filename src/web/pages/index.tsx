@@ -36,7 +36,7 @@ function HeroSlider() {
   const n = SLIDES.length;
   useEffect(() => {
     if (paused) return;
-    const t = setTimeout(() => setI((v) => (v + 1) % n), 5000);
+    const t = setTimeout(() => setI((v) => (v + 1) % n), 3000);
     return () => clearTimeout(t);
   }, [i, paused, n]);
 
@@ -51,7 +51,7 @@ function HeroSlider() {
         {SLIDES.map((s, idx) => (
           <div
             key={s.title}
-            className={`absolute inset-0 transition-opacity duration-700 ${idx === i ? "opacity-100" : "pointer-events-none opacity-0"}`}
+            className={`absolute inset-0 transition-opacity duration-500 ${idx === i ? "opacity-100" : "pointer-events-none opacity-0"}`}
             aria-hidden={idx !== i}
           >
             <img
@@ -59,7 +59,7 @@ function HeroSlider() {
               alt=""
               className={`absolute inset-y-0 right-0 h-full w-full object-cover object-[65%_center] lg:w-[64%] lg:object-center ${idx === i ? "kenburns" : ""}`}
             />
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,#0b1f4b_0%,#0b1f4b_34%,rgba(18,48,110,0.75)_50%,rgba(30,79,216,0.05)_75%)] max-lg:bg-[linear-gradient(90deg,#0b1f4b_10%,rgba(11,31,75,0.6)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,#0d0d0d_0%,#0d0d0d_34%,rgba(13,13,13,0.75)_50%,rgba(13,13,13,0.05)_75%)] max-lg:bg-[linear-gradient(90deg,#0d0d0d_10%,rgba(13,13,13,0.6)_100%)]" />
             <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-transparent lg:hidden" />
             {idx === i && "badges" in s && s.badges && <CertBadges />}
             {idx === i && (
