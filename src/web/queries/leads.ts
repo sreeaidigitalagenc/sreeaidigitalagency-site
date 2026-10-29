@@ -1,18 +1,24 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { client, orpc } from "../lib/api";
-import { DEMO, demoLead, openWhatsAppLead } from "../lib/demo";
-import { useSite } from "./site";
+import { DEMO, demoLead } from "../lib/demo";
 
-/** Saves a lead. Website form enquiries also open WhatsApp with the details (chatbot leads stay in the chat). */
+/**
+ * Saves a lead to the admin database. Website form enquiries also go to WhatsApp (opened by the form),
+ * so if the server can't be reached the form still succeeds; chatbot leads report the error.
+ */
 export function useCreateLead() {
-  const site = useSite();
   type Input = Parameters<typeof client.leads.create>[0];
   return useMutation({
     ...orpc.leads.create.mutationOptions(),
     mutationFn: async (input: Input) => {
-      const res = DEMO ? await demoLead(input) : await client.leads.create(input);
-      if (!DEMO && input.source !== "chatbot") openWhatsAppLead(input, site);
-      return res;
+      if (DEMO) return demoLead(input);
+      try {
+        return await client.leads.create(input);
+      } catch (err) {
+        if (input.source === "chatbot") throw err;
+        console.warn("Lead not saved to the database; it was sent on WhatsApp.", err);
+        return { ok: true as const, id: 0 };
+      }
     },
   });
 }
