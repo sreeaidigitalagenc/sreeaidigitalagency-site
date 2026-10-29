@@ -217,7 +217,7 @@ export const CATEGORIES: Category[] = [
     short: "Sell plots, flats and villas faster with websites, ads and lead follow-up.",
     intro:
       "We help builders, developers and agents in Hyderabad reach real buyers. From a project website and ads to listings, videos and WhatsApp follow-up — we bring you site-visit ready leads.",
-    image: asset("/images/cat-realestate.jpg"),
+    image: asset("/images/slide-realestate.webp"),
     menuItems: [
       "Real Estate Website",
       "Property Lead Generation (Ads)",
@@ -258,10 +258,10 @@ export const SLIDES = [
     linkText: "See Registration Services",
   },
   {
-    image: asset("/images/slide-realestate.jpg"),
+    image: asset("/images/slide-realestate.webp"),
     tag: "Invest in Your Future",
-    title: "Premium Real Estate Investment Opportunities Starting at Just ₹6 Lakhs",
-    text: "Build Wealth. Own Land. Secure Your Future.",
+    title: "Premium Real Estate Investment Opportunities",
+    text: "Starting at Just ₹6 Lakhs. Build Wealth. Own Land. Secure Your Future.",
     cta: "Explore Investment Opportunities",
     link: "/services/real-estate",
     linkText: "See Real Estate Services",
