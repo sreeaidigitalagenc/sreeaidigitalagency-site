@@ -40,9 +40,9 @@ export default function ContactPage() {
               const inner = (
                 <>
                   <span className="grid h-11 w-11 place-items-center rounded-xl bg-royal/10 text-royal"><it.icon className="h-5 w-5" /></span>
-                  <span>
+                  <span className="min-w-0">
                     <span className="block text-[13px]">{it.label}</span>
-                    <span className="block whitespace-pre-line font-semibold text-navy">{it.value}</span>
+                    <span className="block whitespace-pre-line font-semibold text-navy [overflow-wrap:anywhere]">{it.value}</span>
                   </span>
                 </>
               );
