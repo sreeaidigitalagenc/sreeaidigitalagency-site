@@ -11,8 +11,10 @@ export const asset = (p: string) => import.meta.env.BASE_URL.replace(/\/$/, "") 
 
 type LeadInput = { name: string; phone: string; email?: string; service: string; message?: string; source?: string };
 
-/** Open WhatsApp with the enquiry details filled in, addressed to the business number. */
-export function openWhatsAppLead(input: LeadInput, business = { siteName: DEFAULT_SITE.siteName, whatsapp: DEFAULT_SITE.whatsapp }) {
+type Business = { siteName: string; whatsapp: string };
+
+/** wa.me link with the enquiry details filled in, addressed to the business number. */
+export function whatsAppLeadUrl(input: LeadInput, business: Business = DEFAULT_SITE) {
   const note = input.message && !/^Chatbot: |Call-back requested/.test(input.message) ? input.message : "";
   const text = [
     `Hi ${business.siteName}, I have a new enquiry:`,
@@ -24,13 +26,22 @@ export function openWhatsAppLead(input: LeadInput, business = { siteName: DEFAUL
   ]
     .filter(Boolean)
     .join("\n");
-  const url = `https://wa.me/${business.whatsapp}?text=${encodeURIComponent(text)}`;
-  const win = window.open(url, "_blank", "noopener");
-  if (!win) window.location.href = url;
+  return `https://wa.me/${business.whatsapp}?text=${encodeURIComponent(text)}`;
 }
 
-/** Demo replacement for saving a lead: open WhatsApp with the details filled in. */
+/** Open WhatsApp with the enquiry. Call it straight from a click so the browser allows the new tab. */
+export function openWhatsAppLead(input: LeadInput, business: Business = DEFAULT_SITE) {
+  const url = whatsAppLeadUrl(input, business);
+  try {
+    const win = window.open(url, "_blank", "noopener");
+    if (!win) window.location.href = url;
+  } catch {
+    /* blocked: the success screen still shows a WhatsApp button */
+  }
+}
+
+/** Demo replacement for saving a lead (no server). Website forms open WhatsApp themselves. */
 export async function demoLead(input: LeadInput) {
-  openWhatsAppLead(input);
+  if (input.source === "chatbot") openWhatsAppLead(input);
   return { ok: true as const, id: 0 };
 }
