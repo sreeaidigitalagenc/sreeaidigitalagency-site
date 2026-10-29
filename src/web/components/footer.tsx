@@ -8,7 +8,7 @@ export function Footer() {
   const site = useSite();
   const reg = CATEGORIES[0];
   const brandDesign = [CATEGORIES[1], CATEGORIES[2]];
-  const digital = [CATEGORIES[3], CATEGORIES[4], CATEGORIES[5], CATEGORIES[6]];
+  const digital = [CATEGORIES[3], CATEGORIES[4], CATEGORIES[5], CATEGORIES[6], CATEGORIES[7]];
   return (
     <footer className="bg-navy text-white/75">
       <div className="container-x grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">

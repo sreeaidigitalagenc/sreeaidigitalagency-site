@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DEMO } from "../lib/demo";
+import { DEMO, asset } from "../lib/demo";
 import { Link, useLocation } from "wouter";
 import { ChevronDown, Clock, Mail, Menu, Minus, Phone, Plus, X, ArrowRight, LayoutDashboard } from "lucide-react";
 import { CATEGORIES, serviceUrl, waLink } from "../lib/site";
@@ -12,19 +12,15 @@ export function Logo({ light = false }: { light?: boolean }) {
     <Link to="/" className="flex shrink-0 items-center" aria-label={`${site.siteName} home`}>
       {site.logo ? (
         <img src={site.logo} alt={site.siteName} style={{ height: site.logoHeight }} className="w-auto max-w-[220px] object-contain" />
-      ) : site.siteName === "TriMinds" ? (
-        <span className={`text-[28px] font-extrabold tracking-tight ${light ? "text-white" : "text-navy"}`}>
-          Tr
-          <span className="relative">
-            ı
-            <span className="absolute left-1/2 top-[0.2em] h-[0.2em] w-[0.2em] -translate-x-1/2 rounded-full bg-brand" />
-          </span>
-          Minds
-        </span>
       ) : (
-        <span className={`whitespace-nowrap text-[26px] font-extrabold tracking-tight ${light ? "text-white" : "text-navy"}`}>
-          {site.siteName}
-          <span className="text-brand">.</span>
+        <span className="flex items-center gap-2.5">
+          <img src={asset("/images/logo.webp")} alt="" width={48} height={48} className="h-[48px] w-[48px] shrink-0 rounded-full" />
+          <span className="flex flex-col leading-none">
+            <span className={`whitespace-nowrap text-[17px] font-extrabold tracking-tight ${light ? "text-white" : "text-navy"}`}>
+              {site.siteName}
+            </span>
+            <span className="mt-1 whitespace-nowrap text-[11px] font-semibold uppercase tracking-[0.18em] text-royal">AI • Creativity • Growth</span>
+          </span>
         </span>
       )}
     </Link>
