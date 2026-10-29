@@ -258,6 +258,15 @@ export const SLIDES = [
     linkText: "See Registration Services",
   },
   {
+    image: asset("/images/slide-realestate.jpg"),
+    tag: "Real Estate Marketing",
+    title: "Sell Your Properties Faster",
+    text: "Project websites, Facebook & Google ads, portal listings and drone videos that bring genuine buyers to your plots, flats and villas.",
+    cta: "Get More Buyer Leads",
+    link: "/services/real-estate",
+    linkText: "See Real Estate Services",
+  },
+  {
     image: asset("/images/slide-microsoft.jpg"),
     tag: "Microsoft Certifications",
     title: "Get Microsoft Certified",
