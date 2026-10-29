@@ -1,9 +1,20 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { orpc } from "../lib/api";
-import { DEMO, demoLead } from "../lib/demo";
+import { client, orpc } from "../lib/api";
+import { DEMO, demoLead, openWhatsAppLead } from "../lib/demo";
+import { useSite } from "./site";
 
+/** Saves a lead. Website form enquiries also open WhatsApp with the details (chatbot leads stay in the chat). */
 export function useCreateLead() {
-  return useMutation({ ...orpc.leads.create.mutationOptions(), ...(DEMO ? { mutationFn: demoLead } : {}) });
+  const site = useSite();
+  type Input = Parameters<typeof client.leads.create>[0];
+  return useMutation({
+    ...orpc.leads.create.mutationOptions(),
+    mutationFn: async (input: Input) => {
+      const res = DEMO ? await demoLead(input) : await client.leads.create(input);
+      if (!DEMO && input.source !== "chatbot") openWhatsAppLead(input, site);
+      return res;
+    },
+  });
 }
 
 export function useLeads() {
