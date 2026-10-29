@@ -2,6 +2,8 @@ import { useState } from "react";
 import { CheckCircle2, ChevronDown, Loader2, Phone, User, Briefcase } from "lucide-react";
 import { CATEGORIES } from "../lib/site";
 import { useCreateLead } from "../queries/leads";
+import { useSite } from "../queries/site";
+import { openWhatsAppLead, whatsAppLeadUrl } from "../lib/demo";
 
 type Props = {
   layout?: "row" | "stack";
@@ -27,6 +29,7 @@ export function LeadForm({
   const [message, setMessage] = useState("");
   const [error, setError] = useState<string | null>(null);
   const create = useCreateLead();
+  const site = useSite();
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,8 +38,10 @@ export function LeadForm({
     if (name.trim().length < 2) return setError("Please enter your name.");
     if (!/^[6-9]\d{9}$/.test(digits)) return setError("Please enter a valid 10-digit mobile number.");
     if (!service) return setError("Please select a service.");
+    const lead = { name, phone: digits, email, service, message, source };
+    openWhatsAppLead(lead, site);
     create.mutate(
-      { name, phone: digits, email, service, message, source },
+      lead,
       { onError: () => setError("Something went wrong. Please call or WhatsApp us.") },
     );
   };
@@ -47,6 +52,14 @@ export function LeadForm({
         <CheckCircle2 className="h-10 w-10 text-wa" />
         <p className="text-lg font-semibold text-navy">Thank you, {name.split(" ")[0]}!</p>
         <p className="text-[15px]">Our expert will call you on +91 {phone.replace(/\D/g, "").slice(-10)} within 30 minutes.</p>
+        <a
+          href={whatsAppLeadUrl({ name, phone: phone.replace(/\D/g, "").slice(-10), email, service, message, source }, site)}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-2 inline-flex items-center gap-2 rounded-xl bg-wa px-5 py-2.5 text-[15px] font-semibold text-white hover:opacity-90"
+        >
+          Send details on WhatsApp
+        </a>
       </div>
     );
   }
