@@ -217,7 +217,7 @@ export const CATEGORIES: Category[] = [
     short: "Sell plots, flats and villas faster with websites, ads and lead follow-up.",
     intro:
       "We help builders, developers and agents in Hyderabad reach real buyers. From a project website and ads to listings, videos and WhatsApp follow-up — we bring you site-visit ready leads.",
-    image: asset("/images/cat-realestate.jpg"),
+    image: asset("/images/slide-realestate.webp"),
     menuItems: [
       "Real Estate Website",
       "Property Lead Generation (Ads)",
@@ -258,7 +258,7 @@ export const SLIDES = [
     linkText: "See Registration Services",
   },
   {
-    image: asset("/images/slide-realestate.jpg"),
+    image: asset("/images/slide-realestate.webp"),
     tag: "Real Estate Marketing",
     title: "Sell Your Properties Faster",
     text: "Project websites, Facebook & Google ads, portal listings and drone videos that bring genuine buyers to your plots, flats and villas.",
