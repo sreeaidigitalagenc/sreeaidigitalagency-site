@@ -13,14 +13,17 @@ type LeadInput = { name: string; phone: string; email?: string; service: string;
 
 /** Open WhatsApp with the enquiry details filled in, addressed to the business number. */
 export function openWhatsAppLead(input: LeadInput, business = { siteName: DEFAULT_SITE.siteName, whatsapp: DEFAULT_SITE.whatsapp }) {
+  const note = input.message && !/^Chatbot: |Call-back requested/.test(input.message) ? input.message : "";
   const text = [
-    `Hi ${business.siteName}, I'm ${input.name} (+91 ${input.phone}).`,
-    `I'm interested in: ${input.service}.`,
-    input.email ? `Email: ${input.email}.` : "",
-    input.message && !/^Chatbot: |Call-back requested/.test(input.message) ? input.message : "",
+    `Hi ${business.siteName}, I have a new enquiry:`,
+    `Name: ${input.name}`,
+    `Mobile: +91 ${input.phone}`,
+    `Service: ${input.service}`,
+    input.email ? `Email: ${input.email}` : "",
+    note ? `Message: ${note}` : "",
   ]
     .filter(Boolean)
-    .join(" ");
+    .join("\n");
   const url = `https://wa.me/${business.whatsapp}?text=${encodeURIComponent(text)}`;
   const win = window.open(url, "_blank", "noopener");
   if (!win) window.location.href = url;
