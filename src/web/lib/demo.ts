@@ -11,17 +11,23 @@ export const asset = (p: string) => import.meta.env.BASE_URL.replace(/\/$/, "") 
 
 type LeadInput = { name: string; phone: string; email?: string; service: string; message?: string; source?: string };
 
-/** Demo replacement for saving a lead: open WhatsApp with the details filled in. */
-export async function demoLead(input: LeadInput) {
+/** Open WhatsApp with the enquiry details filled in, addressed to the business number. */
+export function openWhatsAppLead(input: LeadInput, business = { siteName: DEFAULT_SITE.siteName, whatsapp: DEFAULT_SITE.whatsapp }) {
   const text = [
-    `Hi ${DEFAULT_SITE.siteName}, I'm ${input.name} (${input.phone}).`,
+    `Hi ${business.siteName}, I'm ${input.name} (+91 ${input.phone}).`,
     `I'm interested in: ${input.service}.`,
+    input.email ? `Email: ${input.email}.` : "",
     input.message && !/^Chatbot: |Call-back requested/.test(input.message) ? input.message : "",
   ]
     .filter(Boolean)
     .join(" ");
-  const url = `https://wa.me/${DEFAULT_SITE.whatsapp}?text=${encodeURIComponent(text)}`;
+  const url = `https://wa.me/${business.whatsapp}?text=${encodeURIComponent(text)}`;
   const win = window.open(url, "_blank", "noopener");
   if (!win) window.location.href = url;
+}
+
+/** Demo replacement for saving a lead: open WhatsApp with the details filled in. */
+export async function demoLead(input: LeadInput) {
+  openWhatsAppLead(input);
   return { ok: true as const, id: 0 };
 }
