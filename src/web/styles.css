@@ -121,10 +121,10 @@
 
 @theme {
   --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
-  --color-navy: #0b1f4b;
+  --color-navy: #0d0d0d;
   --color-navy-2: color-mix(in srgb, var(--color-navy) 82%, white);
-  --color-royal: #1e4fd8;
-  --color-brand: #ff7a1a;
+  --color-royal: #8a6a1e;
+  --color-brand: #c9a227;
   --color-brand-dark: color-mix(in srgb, var(--color-brand) 88%, black);
   --color-wa: #25d366;
   --color-surface: #f4f6fa;
@@ -137,7 +137,7 @@ body { font-family: var(--font-sans); color: var(--color-body); -webkit-font-smo
 h1, h2, h3, h4 { color: var(--color-navy); }
 
 .btn-brand {
-  @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-6 py-3 font-semibold text-white shadow-[0_8px_20px_-6px_rgba(255,122,26,0.55)] transition hover:bg-brand-dark hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0;
+  @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-6 py-3 font-semibold text-white shadow-[0_8px_20px_-6px_rgba(201,162,39,0.55)] transition hover:bg-brand-dark hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0;
 }
 .btn-ghost {
   @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/60 px-6 py-3 font-semibold text-white transition hover:bg-white hover:text-navy;
