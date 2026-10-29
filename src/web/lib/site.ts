@@ -182,7 +182,7 @@ export const CATEGORIES: Category[] = [
   },
   {
     slug: "microsoft-certifications",
-    menu: "Microsoft Certifications",
+    menu: "Microsoft",
     title: "Microsoft Certifications",
     short: "Fundamentals training for Azure, AI, Copilot, Microsoft 365, Power Platform and Security.",
     intro:
@@ -208,6 +208,36 @@ export const CATEGORIES: Category[] = [
       { name: "PL-900: Power Platform Fundamentals", text: "Build simple apps, automations and reports with Power Apps, Power Automate and Power BI — no coding needed." },
       { name: "MS-900: Microsoft 365 Fundamentals", text: "Learn the basics of Microsoft 365 — Outlook, Teams, SharePoint, OneDrive, security and licensing." },
       { name: "SC-900: Security, Compliance & Identity Fundamentals", text: "Learn the basics of cyber security, identity and data protection with Microsoft tools." },
+    ],
+  },
+  {
+    slug: "real-estate",
+    menu: "Real Estate",
+    title: "Real Estate Marketing",
+    short: "Sell plots, flats and villas faster with websites, ads and lead follow-up.",
+    intro:
+      "We help builders, developers and agents in Hyderabad reach real buyers. From a project website and ads to listings, videos and WhatsApp follow-up — we bring you site-visit ready leads.",
+    image: asset("/images/cat-realestate.jpg"),
+    menuItems: [
+      "Real Estate Website",
+      "Property Lead Generation (Ads)",
+      "Property Portal Listings",
+      "Drone & Walkthrough Videos",
+      "Brochure & Project Branding",
+      "RERA Registration Support",
+    ],
+    who: ["Builders and developers launching a project", "Real estate agents and channel partners", "Owners selling plots, flats or villas"],
+    includes: ["Free call to understand your project", "Plan for your budget and location", "Setup by our expert team", "Weekly lead and ad reports on WhatsApp", "Changes and follow-up support"],
+    docs: ["Project details (location, sizes, prices)", "Photos, layout plans and approvals (HMDA / DTCP / RERA if any)", "Logo and brand colours (if any)"],
+    services: [
+      { name: "Real Estate Website", text: "A fast project website with photos, floor plans, location map and an enquiry form.", days: "1–2 weeks" },
+      { name: "Property Lead Generation (Ads)", text: "Facebook, Instagram and Google ads that bring genuine buyer enquiries.", days: "Monthly plan" },
+      { name: "Property Portal Listings", text: "Professional listings on 99acres, MagicBricks, Housing and NoBroker.", days: "2–3 days" },
+      { name: "Drone & Walkthrough Videos", text: "Drone shots, site walkthroughs and reels that show your project at its best.", days: "3–7 days" },
+      { name: "Brochure & Project Branding", text: "Project name, logo, brochure, hoardings and flyers that build trust.", days: "5–7 days" },
+      { name: "Social Media for Real Estate", text: "Regular posts and reels for your project pages to keep buyers interested.", days: "Monthly plan" },
+      { name: "WhatsApp Lead Follow-up", text: "Instant replies, brochures and site-visit booking on WhatsApp — no lead missed.", days: "Ready in 1 week" },
+      { name: "RERA Registration Support", text: "Help with RERA registration for projects and agents in Telangana.", days: "15–30 days" },
     ],
   },
 ];
