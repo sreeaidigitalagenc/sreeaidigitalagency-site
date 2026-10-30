@@ -152,7 +152,7 @@ export function Header() {
       </header>
 
       {/* Mobile drawer */}
-      <div className={`fixed inset-0 z-[60] min-[1150px]:hidden ${open ? "" : "pointer-events-none"}`}>
+      <div className={`fixed inset-0 z-[60] overflow-hidden transition-[visibility] min-[1150px]:hidden ${open ? "visible" : "pointer-events-none invisible delay-300"}`} aria-hidden={!open}>
         <button
           type="button"
           aria-label="Close menu overlay"
