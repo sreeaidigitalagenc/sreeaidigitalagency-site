@@ -134,6 +134,12 @@
 
 html { scroll-behavior: smooth; }
 body { font-family: var(--font-sans); color: var(--color-body); -webkit-font-smoothing: antialiased; }
+
+/* Stop the page from sliding sideways on phones: nothing may widen the page,
+   and horizontal swipes don't drag or bounce it. `clip` keeps the sticky header working. */
+html, body { max-width: 100%; overflow-x: clip; overscroll-behavior-x: none; }
+@supports not (overflow-x: clip) { body { overflow-x: hidden; } }
+img, video, svg, iframe { max-width: 100%; }
 h1, h2, h3, h4 { color: var(--color-navy); }
 
 .btn-brand {
